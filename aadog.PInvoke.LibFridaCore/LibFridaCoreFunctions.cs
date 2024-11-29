@@ -13,6 +13,13 @@ namespace aadog.PInvoke.LibFridaCore
         public unsafe delegate void GFunc(IntPtr data, IntPtr user_data);
         const string DllName = "FridaCore";
 
+        /*g_object*/
+        [LibraryImport(DllName, EntryPoint = $"{Frida_LibPrefix}g_object_unref")]
+        public static unsafe partial void g_object_unref(void* data);
+
+        /*g_object*/
+        [LibraryImport(DllName, EntryPoint = $"{Frida_LibPrefix}g_object_ref")]
+        public static unsafe partial GBytes* g_object_ref(void* data);
 
         /*g_bytes*/
         [LibraryImport(DllName, EntryPoint = $"{Frida_LibPrefix}g_bytes_new")]
@@ -39,7 +46,7 @@ namespace aadog.PInvoke.LibFridaCore
         [LibraryImport(DllName)]
         public static unsafe partial void frida_deinit();
         [LibraryImport(DllName)]
-        public static unsafe partial void frida_unref(IntPtr obj);
+        public static unsafe partial void frida_unref(void* obj);
 
         /* DeviceManager */
         [LibraryImport(DllName)]
