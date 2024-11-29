@@ -29,7 +29,7 @@ namespace aadog.PInvoke.LibFridaCore
         public static unsafe partial void _g_object_unref(void* data);
         [LibraryImport(DllName)]
         public static unsafe partial void _frida_g_object_unref(void* data);
-        public static unsafe void call_g_object_unref(GError* error)
+        public static unsafe void g_object_unref(GError* error)
         {
             if (IsWindows)
                 _g_object_unref(error);
