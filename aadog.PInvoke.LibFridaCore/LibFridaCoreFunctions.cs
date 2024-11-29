@@ -7,6 +7,8 @@ namespace aadog.PInvoke.LibFridaCore
     {
         public static bool IsWindows = false;
         public unsafe delegate void GFunc(IntPtr data, IntPtr user_data);
+
+        public unsafe delegate void GHFunc(IntPtr key, IntPtr value, IntPtr user_data);
         const string DllName = "FridaCore";
 
 
@@ -22,6 +24,21 @@ namespace aadog.PInvoke.LibFridaCore
             else
                 _frida_g_error_free(error);
         }
+
+        /*g_hashtable*/
+        [LibraryImport(DllName,EntryPoint = "g_hash_table_foreach")]
+        public static unsafe partial void _g_hash_table_foreach(GHashTable* hash_table, GHFunc func, IntPtr user_data);
+        [LibraryImport(DllName)]
+        public static unsafe partial void _frida_g_hash_table_foreach(GHashTable* hash_table, GHFunc func, IntPtr user_data);
+        public static unsafe void g_hash_table_foreach(GHashTable* hash_table, GHFunc func, IntPtr user_data)
+        {
+            if (IsWindows)
+                _g_hash_table_foreach(hash_table, func, user_data);
+            else
+                _frida_g_hash_table_foreach(hash_table, func, user_data);
+        }
+
+
 
 
         /*g_object*/
