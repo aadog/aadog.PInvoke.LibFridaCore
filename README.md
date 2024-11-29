@@ -1,0 +1,1 @@
+# aadog.PInvoke.LibFridaCore
