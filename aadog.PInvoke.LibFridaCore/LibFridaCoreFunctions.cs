@@ -13,11 +13,13 @@ namespace aadog.PInvoke.LibFridaCore
         public unsafe delegate void GFunc(IntPtr data, IntPtr user_data);
         const string DllName = "FridaCore";
 
+
+        /*g_error*/
+        [LibraryImport(DllName, EntryPoint = $"{Frida_LibPrefix}g_error_free")]
+        public static unsafe partial void g_error_free(GError* error);
         /*g_object*/
         [LibraryImport(DllName, EntryPoint = $"{Frida_LibPrefix}g_object_unref")]
         public static unsafe partial void g_object_unref(void* data);
-
-        /*g_object*/
         [LibraryImport(DllName, EntryPoint = $"{Frida_LibPrefix}g_object_ref")]
         public static unsafe partial GBytes* g_object_ref(void* data);
 
