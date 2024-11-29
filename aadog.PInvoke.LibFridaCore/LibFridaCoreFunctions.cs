@@ -11,10 +11,10 @@ namespace aadog.PInvoke.LibFridaCore
 
 
         /*g_error*/
+        [LibraryImport(DllName, EntryPoint = "g_error_free")]
+        public static unsafe partial void _g_error_free(GError* error);
         [LibraryImport(DllName)]
         public static unsafe partial void _frida_g_error_free(GError* error);
-        [LibraryImport(DllName,EntryPoint = "g_error_free")]
-        public static unsafe partial void _g_error_free(GError* error);
         public static unsafe void g_error_free(GError* error)
         {
             if(IsWindows)
@@ -39,7 +39,7 @@ namespace aadog.PInvoke.LibFridaCore
         
         [LibraryImport(DllName,EntryPoint = "g_object_ref")]
         public static unsafe partial void* _g_object_ref(void* obj);
-        [LibraryImport(DllName, EntryPoint = "g_object_ref")]
+        [LibraryImport(DllName)]
         public static unsafe partial void* _frida_g_object_ref(void* obj);
         public static unsafe void* g_object_ref(void* obj)
         {
@@ -63,7 +63,7 @@ namespace aadog.PInvoke.LibFridaCore
         }
 
 
-        [LibraryImport(DllName)]
+        [LibraryImport(DllName,EntryPoint = "g_bytes_unref")]
         public static unsafe partial void _g_bytes_unref(GBytes* bytes);
         [LibraryImport(DllName)]
         public static unsafe partial void _frida_g_bytes_unref(GBytes* bytes);
@@ -79,7 +79,7 @@ namespace aadog.PInvoke.LibFridaCore
 
 
 
-        [LibraryImport(DllName)]
+        [LibraryImport(DllName,EntryPoint = "g_bytes_get_size")]
         public static unsafe partial gsize _g_bytes_get_size(GBytes* bytes);
         [LibraryImport(DllName)]
         public static unsafe partial gsize _frida_g_bytes_get_size(GBytes* bytes);
@@ -93,7 +93,7 @@ namespace aadog.PInvoke.LibFridaCore
 
 
 
-        [LibraryImport(DllName)]
+        [LibraryImport(DllName,EntryPoint = "g_bytes_get_data")]
         public static unsafe partial IntPtr _g_bytes_get_data(GBytes* bytes, gsize* size);
         [LibraryImport(DllName)]
         public static unsafe partial IntPtr _frida_g_bytes_get_data(GBytes* bytes, gsize* size);
