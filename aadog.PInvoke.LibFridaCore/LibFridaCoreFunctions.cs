@@ -25,6 +25,118 @@ namespace aadog.PInvoke.LibFridaCore
                 _frida_g_error_free(error);
         }
 
+        /*g_variant*/
+        [LibraryImport(DllName, EntryPoint = "g_variant_get_type_string")]
+        public static unsafe partial IntPtr _g_variant_get_type_string(GVariant* value);
+        [LibraryImport(DllName)]
+        public static unsafe partial IntPtr _frida_g_variant_get_type_string(GVariant* value);
+        public static unsafe IntPtr g_variant_get_type_string(GVariant* value)
+        {
+            if (IsWindows)
+                return _g_variant_get_type_string(value);
+            else
+                return _frida_g_variant_get_type_string(value);
+        }
+
+        [LibraryImport(DllName, EntryPoint = "g_variant_get_string")]
+        public static unsafe partial IntPtr _g_variant_get_string(GVariant* value, gsize* length);
+        [LibraryImport(DllName)]
+        public static unsafe partial IntPtr _frida_g_variant_get_string(GVariant* value, gsize* length);
+        public static unsafe IntPtr g_variant_get_string(GVariant* value, gsize* length)
+        {
+            if (IsWindows)
+                return _g_variant_get_string(value,length);
+            else
+                return _frida_g_variant_get_string(value, length);
+        }
+
+        [LibraryImport(DllName, EntryPoint = "g_variant_get_boolean")]
+        public static unsafe partial gboolean _g_variant_get_boolean(GVariant* value);
+        [LibraryImport(DllName)]
+        public static unsafe partial gboolean _frida_g_variant_get_boolean(GVariant* value);
+        public static unsafe gboolean g_variant_get_boolean(GVariant* value)
+        {
+            if (IsWindows)
+                return _g_variant_get_boolean(value);
+            else
+                return _frida_g_variant_get_boolean(value);
+        }
+
+
+
+        [LibraryImport(DllName, EntryPoint = "g_variant_get_int64")]
+        public static unsafe partial Int64 _g_variant_get_int64(GVariant* value);
+        [LibraryImport(DllName)]
+        public static unsafe partial Int64 _frida_g_variant_get_int64(GVariant* value);
+        public static unsafe Int64 g_variant_get_int64(GVariant* value)
+        {
+            if (IsWindows)
+                return _g_variant_get_int64(value);
+            else
+                return _frida_g_variant_get_int64(value);
+        }
+
+
+        [LibraryImport(DllName, EntryPoint = "g_variant_iter_new")]
+        public static unsafe partial GVariantIter* _g_variant_iter_new(GVariant* value);
+        [LibraryImport(DllName)]
+        public static unsafe partial GVariantIter* _frida_g_variant_iter_new(GVariant* value);
+        public static unsafe GVariantIter* g_variant_iter_new(GVariant* value)
+        {
+            if (IsWindows)
+                return _g_variant_iter_new(value);
+            else
+                return _frida_g_variant_iter_new(value);
+        }
+
+        [LibraryImport(DllName, EntryPoint = "g_variant_iter_free")]
+        public static unsafe partial void _g_variant_iter_free(GVariantIter* value);
+        [LibraryImport(DllName)]
+        public static unsafe partial void _frida_g_variant_iter_free(GVariantIter* value);
+        public static unsafe void g_variant_iter_free(GVariantIter* value)
+        {
+            if (IsWindows)
+                _g_variant_iter_free(value);
+            else
+                _frida_g_variant_iter_free(value);
+        }
+
+
+
+
+
+
+        [LibraryImport(DllName, EntryPoint = "g_variant_iter_init")]
+        public static unsafe partial gboolean _g_variant_iter_init(GVariantIter* iter,  GVariant* value);
+        [LibraryImport(DllName)]
+        public static unsafe partial gboolean _frida_g_variant_iter_init(GVariantIter* iter, GVariant* value);
+        public static unsafe gboolean g_variant_iter_init(GVariantIter* iter, GVariant* value)
+        {
+            if (IsWindows)
+                return _g_variant_iter_init(iter, value);
+            else
+                return _frida_g_variant_iter_init(iter, value);
+        }
+
+
+        [LibraryImport(DllName, EntryPoint = "g_variant_iter_loop")]
+        public static unsafe partial gboolean _g_variant_iter_loop(GVariantIter* iter, [MarshalAs(UnmanagedType.LPUTF8Str)]string format_string,void* key, GVariant** value);
+        [LibraryImport(DllName)]
+        public static unsafe partial gboolean _frida_g_variant_iter_loop(GVariantIter* iter, [MarshalAs(UnmanagedType.LPUTF8Str)] string format_string,void* key, GVariant** value);
+        public static unsafe gboolean g_variant_iter_loop(GVariantIter* iter, [MarshalAs(UnmanagedType.LPUTF8Str)] string format_string,void* key, GVariant** value)
+        {
+            if (IsWindows)
+                return _g_variant_iter_loop(iter,format_string,key, value);
+            else
+                return _frida_g_variant_iter_loop(iter, format_string,key, value);
+        }
+
+
+
+
+
+
+
         /*g_hashtable*/
         [LibraryImport(DllName,EntryPoint = "g_hash_table_foreach")]
         public static unsafe partial void _g_hash_table_foreach(GHashTable* hash_table, GHFunc func, IntPtr user_data);
